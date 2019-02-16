@@ -57,7 +57,9 @@ class FitTransferModel(CodingProblem):
         their_val_dir = fit_stats.validation_data.directory
         their_val_loss = fit_stats.history['val_loss'][0]
         their_num_steps = fit_stats.params['steps']
-        assert (their_val_dir == '../input/dogs-gone-sideways/images/val'),\
+        acceptable_val_dirs = ['../input/dogs-gone-sideways/images/val',
+                               '../input/dogs-gone-sideways/val']
+        assert (their_val_dir in acceptable_val_dirs),\
                ("The validation directory should be `../input/dogs-gone-sideways/images/val`. Yours was {}".format(their_val_dir))
         assert (their_num_steps == 22), ("Should have 22 steps per epoch. You had {}".format(their_num_steps))
     _solution = CS(
